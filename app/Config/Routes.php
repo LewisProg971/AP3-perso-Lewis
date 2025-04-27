@@ -7,7 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 // $routes->get('/', 'Home::index');
 
-$routes->get('/', 'Publicom::connexion', ['as' => 'connexion'] );
+// $routes->get('/', 'Publicom::connexion', ['as' => 'connexion'] );
 
 service('auth')->routes($routes);
 
