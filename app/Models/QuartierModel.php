@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Message extends Model
+class QuartierModel extends Model
 {
-    protected $table            = 'message';
-    protected $primaryKey       = 'ID_MESSAGE';
+    protected $table            = 'quartiers';
+    protected $primaryKey       = 'ID_QUARTIER';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['ID_CLIENT', 'LIBELLE', 'ETAT_MESSAGE', 'COULEUR','id_quartier'];
+    protected $allowedFields    = ['NOM_QUARTIER', 'ID_CLIENT'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -43,32 +43,4 @@ class Message extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function findJoinAll()
-    {
-        return $this
-            ->select(
-                '
-        message.ID_CLIENT,
-        message.ID_MESSAGE,
-        message.LIBELLE,
-        message.ETAT_MESSAGE,
-        message.COULEUR,
-        quartier.NOM_QUARTIER,
-        client.NOM_COMMUNE,
-        client.ID_CLIENT,
-        client.NOM_RESPONSABLE,
-        client.DESCRIPTION'
-            )
-            ->join('client', 'message.ID_CLIENT=client.ID_CLIENT')
-            ->join('quartier', 'message.id=client.ID_CLIENT')
-            ->findAll();
-    }
-
-    // Fonction qui permet supprimer idclient du message
-    public function deleteMessage($ID_CLIENT)
-    {
-        $this->where('message.ID_CLIENT', $ID_CLIENT)
-            ->delete();
-    }
 }

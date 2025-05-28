@@ -7,7 +7,7 @@
 
     $table = new \CodeIgniter\View\Table();
 
-    $table->setHeading('NOM COMMUNE', 'MESSAGE', 'ACTIF', 'MODIFIER', 'SUPPRIMER');
+    $table->setHeading('NOM COMMUNE','NOM QUARTIER', 'MESSAGE', 'ACTIF', 'MODIFIER', 'SUPPRIMER');
 
     ?>
 
@@ -27,7 +27,7 @@
 
         $table->addRow(
             $message['NOM_COMMUNE'],
-            '<p style="color:' . $message['COULEUR'] . ';">' . $message['LIBELLE'] . '<p/>',
+            '<p style="color:' . $message['COULEUR'] . ';">' . $message['LIBELLE'] . '<p/>',$message['NOM_QUARTIER'],
             // fermer l'input
             // supprimer l'attribut value
             // rajouter l'attribut checked SEULEMENT SI $message['ETAT_MESSAGE'] = 1 (utiliser l'opérateur ternaire ? 'checked' : '')

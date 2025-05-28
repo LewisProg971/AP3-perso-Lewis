@@ -34,7 +34,6 @@
 
             <h2 class=titre>Bienvenue sur le site de publicom </h2>
 
-            <h3>Lewis test qqc</h3>
 
         </div>
     </header>

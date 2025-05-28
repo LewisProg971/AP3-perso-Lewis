@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Client;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Model;
+use App\Models\QuartierModel;
 
 class Message extends BaseController
 {
@@ -39,6 +40,7 @@ class Message extends BaseController
         $listeClients = $clientModel->findAll();
 
 
+
         return view('view-message/ajout-message', [
             'listeClients' => $listeClients,
             'admin' => $admin && $admin->inGroup('admin')
@@ -55,6 +57,8 @@ class Message extends BaseController
         // $clientModel->find($clientId);
         $messageModel = model('Message');
         $message = $this->request->getPost();
+        // $quartierModel = new QuartierModel();
+        // $quartiers = $quartierModel->where('ID_CLIENT', $clientId)->findAll();
 
         $etatMessage = $this->request->getPost('ETAT_MESSAGE');
         // si l'utilisateur a coché la case => ça existe et ça contient 'on'
@@ -91,6 +95,9 @@ class Message extends BaseController
 
         $messageModel = model('Message');
         $message = $this->request->getPost();
+        // $quartierModel = new QuartierModel();
+        // $data['quartiers'] = $quartierModel->where('ID_CLIENT', $clientId)->findAll();
+
 
         $etatMessage = $this->request->getPost('ETAT_MESSAGE');
         // si l'utilisateur a coché la case => ça existe et ça contient 'on'
